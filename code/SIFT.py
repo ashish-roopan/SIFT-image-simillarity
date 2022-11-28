@@ -45,7 +45,7 @@ thresh = 0.000135
 
 root_dir = './data'
 sub_dirs = os.listdir(root_dir)
-sub_dirs = [sub_dir for sub_dir in sub_dirs if sub_dir != 'test']
+
 
 train_fail_count = 0
 print("Comparing all images in the same folder")
