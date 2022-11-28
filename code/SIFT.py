@@ -17,8 +17,7 @@ class SIFT:
         keypoints_2, descriptors_2 = self.sift.detectAndCompute(img2, None)
 
         matches = self.bf.match(descriptors_1, descriptors_2)
-        matches = sorted(matches, key=lambda x: x.distance)
-        # score = len(matches) / max(len(keypoints_1), len(keypoints_2))
+
         sum = 0
         distances = []
         for match in matches:
@@ -26,23 +25,15 @@ class SIFT:
             distances.append(match.distance)
         num_matches = len(matches)
             
-        score1 = sum / max(len(keypoints_1), len(keypoints_2))
         mean_distance = sum / num_matches
-        score2 =  num_matches/max(len(keypoints_1), len(keypoints_2)) / (mean_distance + 0.0001)
-        score3 = sum / (len(keypoints_1) + len(keypoints_2))
+        score =  num_matches/max(len(keypoints_1), len(keypoints_2)) / (mean_distance + 0.0001)
 
-        
-
-        # plot the histogram
-        # plt.hist(distances, bins=100)
-        # plt.show()
-        return score2
+        return score
     
 
 
 Sift = SIFT()
-thresh = 0.000135
-
+thresh = 0.00012
 root_dir = './data'
 sub_dirs = os.listdir(root_dir)
 
