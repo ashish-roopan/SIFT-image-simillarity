@@ -33,7 +33,7 @@ class SIFT:
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Find keypoints')
-    parser.add_argument('--thresh', type=float, default=0.13, help='Threshold for similarity')
+    parser.add_argument('--thresh', type=float, default=0.245, help='Threshold for similarity')
     parser.add_argument('--img1', type=str, help='Path toImage 1')
     parser.add_argument('--img2', type=str, help='Path toImage 2')
     args = parser.parse_args()

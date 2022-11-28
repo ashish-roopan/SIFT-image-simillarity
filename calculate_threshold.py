@@ -40,10 +40,13 @@ sub_dirs = os.listdir(root_dir)
 
 thresh = 0.24
 train_fail_count = 0
+train_success_count = 0
 min_train_score = 1000000
-max_test_score = 0
-test_fail_count = 0
 train_scores = []
+
+test_fail_count = 0
+test_success_count = 0
+max_test_score = 0
 test_scores = []
 
 print("Comparing all images in the same folder")
@@ -68,6 +71,8 @@ for sub_dir in sub_dirs:
             if score < thresh:
                 train_fail_count += 1
                 print('failed')
+            else:
+                train_success_count += 1
     print()
 
 
@@ -98,6 +103,8 @@ for i in range(len(sub_dirs)):
                 if score > thresh:
                     test_fail_count += 1
                     print('failed')
+                else:
+                    test_success_count += 1
                 
 avg_train_score = sum(train_scores)/len(train_scores)
 avg_test_score = sum(test_scores)/len(test_scores)             
@@ -107,6 +114,8 @@ print('min_train_score: ', min_train_score)
 print('train_fail_count = ', train_fail_count)
 print('max_test_score : ', max_test_score)
 print('test_fail_count : ', test_fail_count)
+print('train_success_count : ', train_success_count)
+print('test_success_count : ', test_success_count)
 print('avg_train_score : ', avg_train_score)
 print('avg_test_score : ', avg_test_score)
 print()
