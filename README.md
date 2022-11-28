@@ -4,9 +4,9 @@ Calculate similarity between 2 images using SIFT
 # Usage
 ## Testing two image for similarity
 ```
-python check_similarity.py --thresh 0.13 -img1 img1_path -img2 img2_path
+python check_similarity.py --thresh 0.245 -img1 img1_path -img2 img2_path
 ````
-The images will be similar if score > 0.13
+The images will be similar if score > 0.245
 
 
 
