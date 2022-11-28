@@ -38,7 +38,7 @@ Sift = SIFT()
 root_dir = './data'
 sub_dirs = os.listdir(root_dir)
 
-thresh = 0.22
+thresh = 0.24
 train_fail_count = 0
 min_train_score = 1000000
 max_test_score = 0
@@ -109,6 +109,7 @@ print('max_test_score : ', max_test_score)
 print('test_fail_count : ', test_fail_count)
 print('avg_train_score : ', avg_train_score)
 print('avg_test_score : ', avg_test_score)
+print()
 
 print('approch 1: between max_test_score and min_train_score')
 print('threshold can be set to : any value between ', max_test_score, ' and ', min_train_score)
