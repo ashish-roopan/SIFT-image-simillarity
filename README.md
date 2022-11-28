@@ -44,3 +44,25 @@ python calculate_threshold.py --data_dir data
 
 ````
 
+# Approch
+
+Since most of the image in the same subfolders are taken under similar lighting condition and camera angle, I went with SIFT keypoint detector and discriptor algorithm to compute the similarity score.
+
+1. First Keypoints and duiscriptors are calculated for both the images and they are matched based on the distance between the discriptors.
+```
+keypoints_1, descriptors_1 = self.sift.detectAndCompute(img1, None)
+keypoints_2, descriptors_2 = self.sift.detectAndCompute(img2, None)
+matches = self.bf.match(descriptors_1, descriptors_2)
+```
+2. Then the quality of the match is computed using the number of matches and the distance between the matched discriptors. The score will be higher for the similar images. 
+```
+distances = []
+for match in matches:
+    sum += match.distance
+    distances.append(match.distance)
+num_matches = len(matches)
+score =  num_matches/max(len(keypoints_1), len(keypoints_2)) + 1/(mean_distance + 0.0001)
+
+```
+
+
