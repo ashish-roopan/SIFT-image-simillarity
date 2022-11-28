@@ -64,5 +64,12 @@ num_matches = len(matches)
 score =  num_matches/max(len(keypoints_1), len(keypoints_2)) + 1/(mean_distance + 0.0001)
 
 ```
-
+ #Results
+ False negatives = 8
+ False positives = 10
+ True positives = 104
+ True negatives = 1255
+ 
+ Precesion = 0.91
+ Recall = 0.93
 
