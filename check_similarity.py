@@ -25,15 +25,17 @@ class SIFT:
         num_matches = len(matches)
             
         mean_distance = sum / num_matches
-        score =  num_matches/max(len(keypoints_1), len(keypoints_2)) / (mean_distance + 0.0001)
+        # score =  num_matches/max(len(keypoints_1), len(keypoints_2)) / (mean_distance + 0.0001)
+        score =  num_matches/max(len(keypoints_1), len(keypoints_2)) + 1/(mean_distance + 0.0001)
+
 
         return score
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Find keypoints')
-    parser.add_argument('--thresh', type=int, default=0.13, help='Threshold for similarity')
-    parser.add_argument('--img1 ', type=str, help='Path toImage 1')
-    parser.add_argument('--img2 ', type=str, help='Path toImage 2')
+    parser.add_argument('--thresh', type=float, default=0.13, help='Threshold for similarity')
+    parser.add_argument('--img1', type=str, help='Path toImage 1')
+    parser.add_argument('--img2', type=str, help='Path toImage 2')
     args = parser.parse_args()
     return args
 
@@ -52,7 +54,7 @@ img2 = cv2.resize(img2, (512, 512))
 # Compare images
 score = Sift.compare(img1, img2)
 
-if score < args.thresh:
+if score > args.thresh:
     print('Images are similar : ', score)
 else:
     print('Images are not similar : ', score)
