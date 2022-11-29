@@ -61,6 +61,7 @@ for match in matches:
     sum += match.distance
     distances.append(match.distance)
 num_matches = len(matches)
+mean_distance = sum / num_matches
 score =  num_matches/max(len(keypoints_1), len(keypoints_2)) + 1/(mean_distance + 0.0001)
 
 ```
